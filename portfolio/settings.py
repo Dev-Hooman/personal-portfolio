@@ -26,23 +26,8 @@ SECRET_KEY = 'django-insecure-!q%szl^5u=n740%f_u%^z@os7&8l)+sczuhxaz**ejxw+2&)#i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.10.5']
+ALLOWED_HOSTS = ['localhost']
 AUTH_USER_MODEL = "users.userAccount"  
-
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "263507373128-iihiqiv8mein9sc98fh2osgfecr58ps3.apps.googleusercontent.com"
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
-
-
-
-SOCIAL_AUTH_FACEBOOK_KEY = '1634486943601420'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '9e508496e2f617319e29d9b62c2e6e26'  # App Secret
-#client_id:  263507373128-iihiqiv8mein9sc98fh2osgfecr58ps3.apps.googleusercontent.com
-#secrete_key: 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
-
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'home'
 
 #Email automation Settings 
 EMAIL_HOST = 'smtp-mail.outlook.com'
@@ -65,7 +50,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
 
-    'social_django'
+    'crispy_forms',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+
+
 ]
 
 MIDDLEWARE = [
@@ -76,8 +69,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
@@ -93,9 +84,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-                'social_django.context_processors.backends',  
-                'social_django.context_processors.login_redirect', 
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -110,7 +99,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_admin_log',
+        'NAME': 'test_baby',
         'USER': 'root',
         'PASSWORD': '53748246',
         'HOST': 'localhost',
@@ -178,35 +167,60 @@ MESSAGE_TAGS = {
 
 }
 
+SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.github.GithubOAuth2',
+    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-    'social_core.backends.google.GoogleOAuth2',
-    
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+LOGIN_REDIRECT_URL = "/home"
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v13.0',
+    },
+
+        'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+
+LOGIN_REDIRECT_URL = "/"
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-SOCIAL_AUTH_PIPELINE = (
-    'social.pipeline.social_auth.social_details',
-    'social.pipeline.social_auth.social_uid',
-    'social.pipeline.social_auth.auth_allowed',
-    'social.pipeline.social_auth.social_user',
-    'social.pipeline.user.get_username',
-    'accounts.pipeline.create_user',
-    'accounts.pipeline.update_user_social_data',
-    # 'social.pipeline.user.create_user',
-    'social.pipeline.social_auth.associate_user',
-    'social.pipeline.social_auth.load_extra_data',
-    'social.pipeline.user.user_details',
-    'social.pipeline.social_auth.associate_by_email'
-)

@@ -14,7 +14,7 @@ from django.contrib import messages
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    return render(request, "accounts/user.html")
+    return render(request, "account/user.html")
         #homepage or maybe profile
 
 def login_view(request):
@@ -60,7 +60,7 @@ def signup_view(request, *args, **kwargs):
     else:
         form = RegistrationForm()
         context['registration_form'] = form  # use it for validation errors
-    return render(request, "accounts/signup.html",context)
+    return render(request, "account/signup.html",context)
 
     
 def logout_view(request):
