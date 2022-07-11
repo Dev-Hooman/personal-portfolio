@@ -1,0 +1,56 @@
+{% extends 'home/base.html' %}
+
+{% block title %} Blog {% endblock %}
+
+
+
+{% block body %}
+<h1>Search Results</h1>
+<hr>
+
+
+
+{% if searchPost|length < 1  %}
+
+<h4>No Result Found.</h4>
+<p>Your search -  <b> {{query}} </b>  - did not match any documents.</p>
+    
+<b> Suggestions: </b>
+
+<ul>
+    <li> Make sure that all words are spelled correctly. </li>
+    <li> Try different keywords. </li>
+    <li> Try more general keywords. </li>
+    <li> Try fewer keywords. </li>
+
+</ul>
+
+<img  src="/media/gifs/noResult.gif" alt="gif" width="400" height="400" </img>
+
+
+
+
+{% endif %}
+
+{% for search in searchPost %}
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-md-6">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+              <strong class="d-inline-block mb-2 text-primary">{{search.category}}</strong>
+              <h3 class="mb-0">
+                <a class="text-dark" href="#">{{search.title}}</a>
+              </h3>
+              <div class="mb-1 text-muted">{{search.pub_date}}</div>
+              <p class="card-text mb-auto">{{search.content | truncatechars:75 }}</p>
+              <div class="my-2">
+                <a role="button" class="btn btn-primary" href="/blog/{{search.slug}}">Continue reading</a>
+              </div>
+              
+            </div>
+            <img src="/media/{{ post.image }}"  class="thumbnail d-block w-100" alt="{{ f.category }}">
+          </div>
+        </div>
+{% endfor %}
+{% endblock %}

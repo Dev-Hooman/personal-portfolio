@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+{% block blogactive %} active {% endblock blogactive%} 
+ 
+ {% block title %} Blog {% endblock %} 
+ 
+ {% block body %}
+
+<h1>BLOG Home!</h1>
+<p>Find amazing blogs contents just here with devHooman!</p>
+<hr>
+
+<div class="container">
+  
+  {% for post in allPost %}
+  <div class="blog-card">
+    <div class="meta">
+      <img class="photo" src="/media/{{ post.image }}"></img>
+      <div class="card-img-overlay">
+        <a href="#" class="btn btn-light btn-sm">{{post.category}}</a>
+      </div>
+      <ul class="details">
+        <li class="author"><a href="#">{{post.author}}</a></li>
+        <li class="date">{{post.pub_date}}</li>
+        <li class="fa fa-eye"> 233 </li>
+        <li class="tags">
+          <ul>
+            <li><a href="#">TAGS</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="description">
+      <h1>{{post.title}}</h1>
+      <h2>idher sub heading aajata</h2>
+      <p> {{post.content | truncatechars:75 }}</p>
+      <p class="read-more">
+        <a href="/blog/{{post.slug}}">Read More</a>
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+
+  <!--ALT b ha-->
+
+</div>
+
+  {% endblock %}
+
