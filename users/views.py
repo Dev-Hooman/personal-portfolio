@@ -26,13 +26,13 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(reverse("index"))
         else:                     #if authentication fails              
-            return render(request, "accounts/login.html", {
+            return render(request, "account/login.html", {
 
                 "message" : "invalid credentials"
                 
             } )
     else:
-        return render(request, "accounts/login.html")
+        return render(request, "account/login.html")
 
 def signup_view(request, *args, **kwargs):
     user = request.user
