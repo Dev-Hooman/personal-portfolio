@@ -21,6 +21,7 @@ def blog(request):
     return render(request, 'blog/blog.html',context)
 
 
+
 def blogPost(request, slug):
     blogPost = Blog.objects.filter(slug=slug).first()
     comments = BlogComment.objects.filter(post=blogPost)
@@ -37,17 +38,15 @@ def postComment(request):
     if request.method=="POST":
         comment = request.POST.get("comment")
         user = request.user
-        print(comment)
-        print(user)
+        
         postSno = request.POST.get("postSno")
         post = Blog.objects.get(sno=postSno)
 
         comment = BlogComment(comment=comment, user=user, post=post)
         comment.save()
-
       
         messages.success(request, 'Your Comment has been posted sucessfully!')
+        
 
-
-    return redirect(f"/blog/{blogPost.slug}")
+    return redirect(f"/blog/{post.slug}")
 
