@@ -8,7 +8,7 @@ class RegistrationForm(UserCreationForm):
     
     class Meta:
         model = userAccount
-        fields = ('username','email','gender','password1','password2', 'gender', 'user_DOB','Address','phone_number')
+        fields = ('username','email','gender','password1','password2', 'user_DOB','Address','phone_number')
 
     #function to clean the email to lower_case before submitting in Database
     def clean_email(self):

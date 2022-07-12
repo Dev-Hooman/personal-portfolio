@@ -18,9 +18,7 @@ urlpatterns = [
     path('',include("home.urls")),
     path('blog/',include("blog.urls")),
     path('accounts/', include("allauth.urls")),
-    path('', include("users.urls")),
-
-
+    path('user/', include("users.urls") ),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

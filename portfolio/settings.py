@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!q%szl^5u=n740%f_u%^z@os7&8l)+sczuhxaz**ejxw+2&)#i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['192.168.10.6']
 AUTH_USER_MODEL = "users.userAccount"  
 
 #Email automation Settings 
@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test_baby',
+        'NAME': 'portfoliodb',
         'USER': 'root',
         'PASSWORD': '53748246',
         'HOST': 'localhost',
@@ -179,7 +179,13 @@ AUTHENTICATION_BACKENDS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-LOGIN_REDIRECT_URL = "/home"
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
@@ -213,14 +219,10 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+LOGIN_REDIRECT_URL = "home"
+ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-SOCIALACCOUNT_EMAIL_REQUIRED = True
-
-LOGIN_REDIRECT_URL = "/"
 
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

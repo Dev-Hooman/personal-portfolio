@@ -1,17 +1,22 @@
-{% extends "home/base.html" %}
+<!--
 
+{% extends "home/base.html" %}
 {% load i18n %}
+
 
 {% load account socialaccount %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% load crispy_forms_filters %}
+
+{% block title %} Login {% endblock %} 
 
 {% block content %}
 
-<div class="container my-3">
+
+<div class="container my-5">
   <div class="card auth-Card">
-    <h2 class="auth-Title"> Sign up</h2>
-    <p class="auth-Subtitle">So, You have account ? <a href="#"> Login </a></p>
+    <h2 class="auth-Title"> Log in</h2>
+    <p class="auth-Subtitle">Don't have an account? <a href="#"> sign Up</a></p>
    
     <div class="social-login">
    
@@ -31,59 +36,34 @@
 
     <p class="auth-or"><span>or</span></p>
 
-     <form class="login" method="POST" action="/">
-       {% csrf_token %}
-        <div class="email-login login_input">
-        
-          <label for="{{form.username.label}}"> <b>{{form.username.label}}</b></label>
-          {{form.username}}
+    <form class="login" method="POST" action="/">
+      {% csrf_token %}
+      <div class="email-login login_input">
+        {{form}}
 
-          <label for="{{form.email.label}}"> <b>{{form.email.label}}</b></label>
-          {{form.email}}
-
-          <label for="{{form.password1.label}}"> <b>Password</b></label>
-          {{form.password1}}
-
-          <label for="{{form.password2.label}}"> <b>Confirm Password</b></label>
-          {{form.password2}}
-
-          <div>
-            <button class="auth-cta-btn" type="submit">Signup</button><br>
-          </div>
-
+        <div>
+          <button class="auth-cta-btn" type="submit">Signup</button><br>
         </div>
 
-        {% if redirect_field_value %}
-          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-        {% endif %}
+      </div>
+
+       {% if redirect_field_value %}
+         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+       {% endif %}
 
 
-      </form>
-
-      
+     </form>
 </div>
+
+
+
+</div>
+
+
 
 {% endblock %}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-->
 

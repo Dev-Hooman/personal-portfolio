@@ -229,6 +229,7 @@
           flex-direction: row;
           max-width: 700px;
         }
+      
         .blog-card .meta {
           flex-basis: 40%;
           height: auto;
@@ -242,6 +243,7 @@
         .blog-card.alt .details {
           padding-left: 25px;
         }
+      }
 
 
 
@@ -266,17 +268,17 @@
 
 
         /*LOGIN PAGE*/
-        body {
-          background-color: rgb(228, 229, 247);
-        }
+
         .social-login img {
           width: 24px;
         }
         a {
           text-decoration: none;
+          color: black;
         }
 
-        .authCard {
+       
+        .auth-Card {
           font-family: sans-serif;
           width: 399px;
           margin-left: auto;
@@ -287,14 +289,18 @@
           background-color: #ffff;
           padding: 1.8rem;
           box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.1);
-        }
+          display: flex;
 
-        .authTitle {
+        }
+      
+
+        .auth-Title {
           text-align: center;
           font-weight: bold;
           margin: 0;
         }
-        .authSubtitle {
+
+        .auth-Subtitle {
           text-align: center;
           font-weight: bold;
         }
@@ -303,7 +309,6 @@
         }
 
         .social-login {
-          display: flex;
           justify-content: center;
           gap: 5px;
         }
@@ -320,13 +325,21 @@
           gap: 5px;
           justify-content: center;
         }
+
         .fb-btn {
-          background: #fff;
-          border: solid 2px rgb(69, 69, 185);
+          color: #fff;
+          text-decoration-color: #fff;
+          background: rgb(51, 113, 238);
+          border: solid 2px rgb(245 239 239);
           border-radius: 8px;
-          padding: 10px;
+          font-weight: bold;
           display: flex;
+          padding: 10px 10px;
+          flex: auto;
           align-items: center;
+          gap: 5px;
+          justify-content: center;
+          
         }
 
         .auth-or {
@@ -348,9 +361,8 @@
         .email-login label {
           color: rgb(170 166 166);
         }
-
      
-        .auth-input {
+        .login_input input {
           padding: 15px 20px;
           margin-top: 8px;
           margin-bottom: 15px;
@@ -375,7 +387,20 @@
           display: block;
         }
 
-      }
+
+        
+
+
+
+
+
+
+
+
+          
+        
+
+      
       
 
 
@@ -505,13 +530,13 @@
         {% if request.user.is_authenticated %}
         <div class="sidebar-footer">
   
-          <a href="#" class="account tooltip-element" data-tooltip="0">
+          <a href="/user/{{userInfo.slug}}" class="account tooltip-element" data-tooltip="0">
             <i class='bx bx-user'></i>
           </a>
           <div class="admin-user tooltip-element" data-tooltip="1">
             <div class="admin-profile hide">
 
-              <img src="{{request.user.displayPicture}}" alt="">
+              <img src="#" alt="">
               <div class="admin-info">
                 <h3>{{request.user.username }}</h3>
                 <h5>About</h5>
@@ -584,93 +609,24 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endfor %}
+        
 
-        <!--LOGIN MODAL-->
-        <!-- <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
-          <div class="modal-dialog">
-             <div class="modal-content">
-                <div class="modal-header">
-                   <h5 class="modal-title" id="signupModalTitle">SignUp Here</h5>
-                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                   <span aria-hidden="true">&times;</span>
-                   </button>
-                </div>
-                <div class="modal-body">
-                   <form action= "/signup" method='post'>
-                      <div class="form-group">
-                         <label for="username">Username</label>
-                         <input type="text" class="form-control" id="username" name="username" placeholder="Choose a unique username">
-                      </div>
-                      <div class="form-group">
-                         <label for="fname">First Name</label>
-                         <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name">
-                      </div>
-                      <div class="form-group">
-                         <label for="lname">Last Name</label>
-                         <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name">
-                      </div>
-                      <div class="form-group">
-                         <label for="email">Email address</label>
-                         <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
-                      </div>
-                      <div class="form-group">
-                         <label for="pass1">Choose a password</label>
-                         <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose Your Password">
-                      </div>
-                      <div class="form-group">
-                         <label for="pass2">Confirm Password</label>
-                         <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Enter your password again">
-                      </div>
-                      {% csrf_token %}
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                   </form>
-                </div>
-                <div class="modal-footer">
-                </div>
-             </div>
-          </div>
-       </div> -->
+      
+        
+
+
+
+        {% block body %}
+      
         {% block content %}
 
         {% endblock content %} 
 
-        {% block body %}
-
-
-
-      
-
 
         {% endblock body %} 
         
-        
-        <!-- <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
-          <div class="modal-dialog">
-          <div class="modal-content">
-          <div class="modal-header">
-             <h5 class="modal-title" id="loginModalTitle">Login Here</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-             </button>
-          </div>
-          <div class="modal-body">
-             <form>
-                <div class="form-group">
-                   <label for="username">Username</label>
-                   <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Choose a unique username">
-                </div>
-                <div class="form-group">
-                   <label for="pass">Enter your password </label>
-                   <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter your password ">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-             </form>
-          </div>
-          <div class="modal-footer">
-          </div>
-           -->
 
-        <p class="copyright">
+        <p class="text-center my-3 copyright">
           &copy; 2022 - <span>Abdul Rehman Sarfaraz</span> All Rights Reserved.
         </p>
         
