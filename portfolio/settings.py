@@ -112,22 +112,34 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #         }
 #     }
 # }
+# DATABASES = {
+#     'default': {  
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'heroku_5339b2d70962352',
+#         'USER': 'b3361d66c91e4a',
+#         'PASSWORD': '046e71ac',
+#         'HOST': 'us-cdbr-east-06.cleardb.net',
+#         'PORT': '3306',
+
+
+#         'OPTIONS':{
+#         #this will prevent ERROR: 1452
+#         "init_command":"SET foreign_key_checks = 0;",
+#         }
+#     }
+# }
+
 DATABASES = {
-    'default': {  
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_5339b2d70962352',
-        'USER': 'b3361d66c91e4a',
-        'PASSWORD': '046e71ac',
-        'HOST': 'us-cdbr-east-06.cleardb.net',
-        'PORT': '3306',
-
-
-        'OPTIONS':{
-        #this will prevent ERROR: 1452
-        "init_command":"SET foreign_key_checks = 0;",
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+} 
+  
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+
 
 
 # Password validation
