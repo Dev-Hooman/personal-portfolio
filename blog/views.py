@@ -6,7 +6,8 @@ from django.db.models import Count
 from django.contrib import messages
 
 
-from blog.models import Blog , BlogComment
+# from blog.models import Blog , BlogComment
+from blog.models import Blog 
 import string
 
 
@@ -33,20 +34,20 @@ def blogPost(request, slug):
     return render(request, 'blog/blogPost.html', context)
 
 
-def postComment(request):
+# def postComment(request):
 
-    if request.method=="POST":
-        comment = request.POST.get("comment")
-        user = request.user
+#     if request.method=="POST":
+#         comment = request.POST.get("comment")
+#         user = request.user
         
-        postSno = request.POST.get("postSno")
-        post = Blog.objects.get(sno=postSno)
+#         postSno = request.POST.get("postSno")
+#         post = Blog.objects.get(sno=postSno)
 
-        comment = BlogComment(comment=comment, user=user, post=post)
-        comment.save()
+#         comment = BlogComment(comment=comment, user=user, post=post)
+#         comment.save()
       
-        messages.success(request, 'Your Comment has been posted sucessfully!')
+#         messages.success(request, 'Your Comment has been posted sucessfully!')
         
 
-    return redirect(f"/blog/{post.slug}")
+#     return redirect(f"/blog/{post.slug}")
 
