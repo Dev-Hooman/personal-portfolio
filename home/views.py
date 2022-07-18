@@ -18,7 +18,6 @@ from django.conf import settings
 def home(request):
 
     allPost =  Blog.objects.filter().order_by('-pub_date')[0:2]
-    print(allPost)
     context = {
         'allPost':allPost,
     }
