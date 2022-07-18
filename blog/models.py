@@ -1,7 +1,7 @@
 from django.db import models
 from users.models import userAccount
 from django.utils.timezone import now
-from tkinter import CASCADE
+from django.db.models.deletion import CASCADE
 # 1) Create your models.  (sketch)
 # > title
 # > Publication date -> pub_date
