@@ -113,18 +113,22 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #         }
 #     }
 # }
-
 DATABASES = {
     'default': {  
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_e82b69c5da6ccbb',
-        'USER': 'b205dd8f52a828:',
-        'PASSWORD': '3ad97729',
+        'NAME': 'heroku_5339b2d70962352',
+        'USER': 'b3361d66c91e4a',
+        'PASSWORD': '046e71ac',
         'HOST': 'us-cdbr-east-06.cleardb.net',
         'PORT': '3306',
+
+
+        'OPTIONS':{
+        #this will prevent ERROR: 1452
+        "init_command":"SET foreign_key_checks = 0;",
+        }
     }
 }
-
 
 
 # Password validation
