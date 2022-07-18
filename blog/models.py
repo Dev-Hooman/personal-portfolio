@@ -26,9 +26,9 @@ class Blog(models.Model):
 class BlogComment(models.Model):
     sno = models.AutoField(primary_key=True)
     comment = models.TextField()
-    user = models.ForeignKey(userAccount, on_delete=models.CASCADE)
-    post = models.ForeignKey(Blog,on_delete=models.CASCADE)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(userAccount, on_delete=CASCADE)
+    post = models.ForeignKey(Blog,on_delete=CASCADE)
+    parent = models.ForeignKey('self', on_delete=CASCADE, null=True)
     timestamp = models.DateTimeField(default=now)
 
 
