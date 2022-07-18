@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
 
-    'crispy_forms',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -237,7 +236,6 @@ SOCIALACCOUNT_PROVIDERS = {
 
 LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 
