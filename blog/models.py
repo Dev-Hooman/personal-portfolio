@@ -22,13 +22,13 @@ class Blog(models.Model):
     def __str__(self) :
         return f"{self.title} by {self.author}"
 
-class BlogComment(models.Model):
-    sno = models.AutoField(primary_key=True)
-    comment = models.TextField()
-    user = models.ForeignKey(userAccount)
-    post = models.ForeignKey(Blog)
-    parent = models.ForeignKey('self' ,null=True)
-    timestamp = models.DateTimeField(default=now)
+# class BlogComment(models.Model):
+#     sno = models.AutoField(primary_key=True)
+#     comment = models.TextField()
+#     user = models.ForeignKey(userAccount, on_delete=models.CASCADE)
+#     post = models.ForeignKey(Blog,on_delete=models.CASCADE)
+#     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+#     timestamp = models.DateTimeField(default=now)
 
 
 # 2) Add the Blog app to the settings
