@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!q%szl^5u=n740%f_u%^z@os7&8l)+sczuhxaz**ejxw+2&)#i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','ar-portfolio-1.herokuapp.com']
+ALLOWED_HOSTS = ['localhost',' devhooman-portfolio.herokuapp.com']
 AUTH_USER_MODEL = "users.userAccount"  
 
 #Email automation Settings 
@@ -190,10 +190,8 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
-
 }
 
 SITE_ID = 1
@@ -201,7 +199,6 @@ SITE_ID = 1
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
