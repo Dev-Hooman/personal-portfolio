@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!q%szl^5u=n740%f_u%^z@os7&8l)+sczuhxaz**ejxw+2&)#i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.10.6']
+ALLOWED_HOSTS = ['localhost','www.devhooman.live']
 AUTH_USER_MODEL = "users.userAccount"  
 
 #Email automation Settings 
@@ -63,6 +63,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -96,20 +97,32 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'portfoliodb',
+#         'USER': 'root',
+#         'PASSWORD': '53748246',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+
+
+#         'OPTIONS':{
+#         #this will prevent ERROR: 1452
+#         "init_command":"SET foreign_key_checks = 0;",
+#         }
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
+    'default': {  
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'portfoliodb',
-        'USER': 'root',
-        'PASSWORD': '53748246',
-        'HOST': 'localhost',
+        'NAME': 'heroku_a6346836a4de388',
+        'USER': 'b962108afa5853',
+        'PASSWORD': '40bd1fa0',
+        'HOST': 'us-cdbr-east-06.cleardb.net',
         'PORT': '3306',
-
-
-        'OPTIONS':{
-        #this will prevent ERROR: 1452
-        "init_command":"SET foreign_key_checks = 0;",
-        }
     }
 }
 
