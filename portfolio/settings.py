@@ -114,13 +114,12 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #     }
 # }
 
-
 DATABASES = {
     'default': {  
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_a6346836a4de388',
-        'USER': 'b962108afa5853',
-        'PASSWORD': '40bd1fa0',
+        'NAME': 'heroku_e82b69c5da6ccbb',
+        'USER': 'b205dd8f52a828:',
+        'PASSWORD': '3ad97729',
         'HOST': 'us-cdbr-east-06.cleardb.net',
         'PORT': '3306',
     }
