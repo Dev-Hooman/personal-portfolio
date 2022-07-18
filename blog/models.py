@@ -1,7 +1,6 @@
 from django.db import models
 from users.models import userAccount
 from django.utils.timezone import now
-from django.db.models.deletion import CASCADE
 # 1) Create your models.  (sketch)
 # > title
 # > Publication date -> pub_date
@@ -26,9 +25,9 @@ class Blog(models.Model):
 class BlogComment(models.Model):
     sno = models.AutoField(primary_key=True)
     comment = models.TextField()
-    user = models.ForeignKey(userAccount, on_delete=CASCADE)
-    post = models.ForeignKey(Blog,on_delete=CASCADE)
-    parent = models.ForeignKey('self', on_delete=CASCADE, null=True)
+    user = models.ForeignKey(userAccount)
+    post = models.ForeignKey(Blog)
+    parent = models.ForeignKey('self' ,null=True)
     timestamp = models.DateTimeField(default=now)
 
 
