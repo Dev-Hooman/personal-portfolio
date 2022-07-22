@@ -15,9 +15,9 @@ from django.conf import settings
 #---------------------------------------
 
 
-from users.models import userAccount
 
 def home(request):
+    
     allPost =  Blog.objects.filter().order_by('-pub_date')[0:2]
     context = {
         'allPost':allPost,
@@ -70,6 +70,7 @@ def search(request):
     message_Display = None
 
     query = request.GET['query']
+    
 
     #query size
     if len(query) > 70:
@@ -77,7 +78,7 @@ def search(request):
     else:
         searchTitle = Blog.objects.filter(title__icontains = query)
         searchContent = Blog.objects.filter(content__icontains = query)
-
+      
         searchPost = searchTitle.union(searchContent)
 
     if searchPost.count() == 0:

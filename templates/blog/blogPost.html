@@ -1,109 +1,197 @@
-{% extends 'home/base.html' %} 
+{% extends 'home/base.html' %}
 
-{% block title %} BlogPost {% endblock %} 
+{% block title %} BlogPost {% endblock %}
+
+{% load humanize %}
+{% load extras %}
+
 {% block body %}
 
 <div class="container">
   <div class="row g-5">
-    <div class="col-md-8">
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        From the {{blogPost.category}}
-      </h3>
-      <article class="blog-post">
-        <h2 class="blog-post-title">{{blogPost.title}}</h2>
-        <img
-          src="/media/{{ blogPost.image }}"
-          class="displayImgPos thumbnail d-block w-100"
-          alt="{{ blogPost.category }}"
-        />
-        <br />
-        <p  class="blog-post-meta fst-italic ">
-          {{blogPost.pub_date}} by <a href="#">{{blogPost.author}}</a>
-        </p>
-        <p class="bi-text-indent-left">{{blogPost.content}}</p>
-        <hr />
-      </article>
-      <section>
+      <div class="col-md-8">
+        <h3 class="pb-4 mb-4 fst-italic border-bottom">
+          From the {{blogPost.category}}
+        </h3>
+        <article class="blog-post">
+          <h2 class="blog-post-title">{{blogPost.title}}</h2>
+          <img
+            src="/media/{{ blogPost.image }}"
+            class="displayImgPos thumbnail d-block w-100"
+            alt="{{ blogPost.category }}"
+          />
+          <br />
+          <p  class="blog-post-meta fst-italic ">
+            {{blogPost.pub_date}} by <a href="#">{{blogPost.author}}</a>
+          </p>
+          <p class="bi-text-indent-left">{{blogPost.content}}</p>
+          <hr />
+        </article>
+        <section>
+          BLOG COMMENT
+          <div class="">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="blog-comment">
+                  <h1>Comments ({{commentsCount}})</h1>
 
 
-        <!--BLOG COMMENT-->
-        <div class="">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="blog-comment">
-                <h1>Comments</h1>
-                <form action="/blog/postComment" method="post">
-                  {% csrf_token %}
-                  <div class="mb-3">
-                    <label for="commentField" class="form-label">Post Comment</label>
-                    <input
-                      type="text"
-                      name="comment"
-                      placeholder="Enter your comment!"
-                      class="form-control"
-                      id="commentField"
-                      aria-describedby="comments"
-                      row=2
-                    />
-                  </div>
-                  <input type="hidden" name="postSno" value="{{blogPost.sno}}" />
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-
-                <hr />
-                <ul class="comments">
-
-                  {% for comment in comments %}
-                  <li class="clearfix">
-                    <img
-                      src="https://bootdey.com/img/Content/user_1.jpg"
-                      class="avatar"
-                      alt=""
-                    />
-                    <div class="post-comments">
-                      <p class="meta">
-                        {{comment.timestamp}} <a href="#">{{comment.user.username}}</a> says :
-                      
-                      </p>
-                      <p>{{comment.comment}}</p>
-                      <i class="pull-right"><a href="#"><small>Reply</small></a></i>
+                  {% if user.is_authenticated%}
+                  <form action="/blog/postComment" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="commentField" class="form-label">Post Comment</label>
+                      <input
+                        type="text"
+                        name="comment"
+                        placeholder="Enter your comment!"
+                        class="form-control"
+                        id="commentField"
+                        aria-describedby="comments"
+                        row="2"
+                        />
                     </div>
-                  </li>
-                  {% endfor %}
+                    <input
+                      type="hidden"
+                      name="postSno"
+                      value="{{blogPost.sno}}"
+                      />
+                    <input
+                      type="hidden"
+                      name="parentSno"
+                      value=""
+                      />
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                  {% else %}
+                  <b style='color: red'>You need to <a href='/accounts/login'>LOGIN</a>
+                    first to post a comment </b>
 
-                   
-                </ul>
+
+                  {% endif %}
+
+                  <hr />
+                  <ul class="comments">
+                    {% for comment in comments %}
+                    <li class="clearfix">
+                      <img
+                        src="https://bootdey.com/img/Content/user_1.jpg"
+                        class="avatar"
+                        alt=""
+                        />
+                      <div class="post-comments">
+                        <p class="badge badge-secondary meta">
+                          {{comment.timestamp | naturaltime}}
+                          <a href="#">{{comment.user.username}}</a> says :
+                        </p>
+                        <p>{{comment.comment}}</p>
+                        <i class="pull-right"><a data-bs-toggle="collapse"
+                            href="#replyBox{{comment.sno}}"><small>Reply</small></a></i>
+                      </div>
+                      
+
+                      <div class="replies">
+                        <ul class="">
+                          {% for reply in replyDict|get_val:comment.sno %}
+                          <li class="clearfix">
+                            <img
+                              src="https://bootdey.com/img/Content/user_1.jpg"
+                              class="avatar"
+                              alt=""
+                              />
+                            <div class="post-comments">
+                              <p class="badge badge-secondary meta">
+                              time
+                                <a href="#">{{reply.user.username}} </a> says :
+                              </p>
+                              <p>{{reply.comment}}</p>
+                              <i class="pull-right"><a data-bs-toggle="collapse"
+                                  href="/"><small>Reply</small></a></i>
+                            </div>
+                          </li>
+                          
+                          {% endfor %}
+
+
+                        </ul>
+
+                      </div>
+
+                      <!--REPLY COLLAPSE-->
+                      <div class="reply my-4">
+                        <div class="collapse" id="replyBox{{comment.sno}}">
+                          <div class="card card-body">
+                            <form action="/blog/postComment" method="post">
+                              {% csrf_token %}
+                              <div class="mb-3">
+                                <label for="replyField" class="form-label">Reply
+                                  to {{comment.user.username}} </label>
+
+                                <input
+                                  type="text"
+                                  name="comment"
+                                  placeholder="Enter your Reply!"
+                                  class="form-control"
+                                  id="replyField"
+                                  aria-describedby="reply"
+                                  row="2"
+                                  />
+
+                                <input
+                                  type="hidden"
+                                  name="parentSno"
+                                  class="form-control"
+                                  value="{{comment.sno}}"
+                                  />
+                              </div>
+                              <input
+                                type="hidden"
+                                name="postSno"
+                                value="{{blogPost.sno}}"
+                                />
+                              <button type="submit" class="btn btn-sm
+                                btn-primary">Submit</button>
+                            </form>
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      
+      <div class="col-md-4">
+        <div class="position-sticky" style="top: 4rem">
+          <div style="background-color: #f8daf6" class="p-4 mb-3 rounded">
+            <h4 class="fst-italic">About</h4>
+            <p class="mb-0">come here later</p>
+          </div>
 
-    <div class="col-md-4">
-      <div class="position-sticky" style="top: 2rem">
-        <div style="background-color: #f8daf6" class="p-4 mb-3 rounded">
-          <h4 class="fst-italic">About</h4>
-          <p class="mb-0">come here later</p>
-        </div>
+          <div class="p-4">
+            <h4 class="fst-italic">Archives</h4>
+            <ol class="list-unstyled mb-0">
+              <li><a href="#">March 2021</a></li>
+            </ol>
+          </div>
 
-        <div class="p-4">
-          <h4 class="fst-italic">Archives</h4>
-          <ol class="list-unstyled mb-0">
-            <li><a href="#">March 2021</a></li>
-          </ol>
-        </div>
-
-        <div class="p-4">
-          <h4 class="fst-italic">Elsewhere</h4>
-          <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-          </ol>
+          <div class="p-4">
+            <h4 class="fst-italic">Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
 
