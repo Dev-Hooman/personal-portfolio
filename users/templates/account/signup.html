@@ -31,7 +31,7 @@
 
     <p class="auth-or"><span>or</span></p>
 
-     <form class="login" method="POST" action="/">
+     <form class="login" method="POST" action="{% url 'account_signup' %}">
        {% csrf_token %}
         <div class="email-login login_input">
         

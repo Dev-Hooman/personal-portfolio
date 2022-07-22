@@ -1,4 +1,3 @@
-from turtle import title
 from django.shortcuts import render
 
 #-------Models Import for Database-------
@@ -15,14 +14,16 @@ from django.core.mail import send_mail
 from django.conf import settings
 #---------------------------------------
 
-def home(request):
 
+from users.models import userAccount
+
+def home(request):
     allPost =  Blog.objects.filter().order_by('-pub_date')[0:2]
     context = {
         'allPost':allPost,
     }
-
     return render(request, 'home/index.html',context)
+
 
 def about(request):
     

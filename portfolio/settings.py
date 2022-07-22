@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!q%szl^5u=n740%f_u%^z@os7&8l)+sczuhxaz**ejxw+2&)#i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','myportfoliomain.herokuapp.com']
+ALLOWED_HOSTS = ['192.168.10.2','www.devhooman.live','devhooman.live','devhooman-portfolio.herokuapp.com']
 AUTH_USER_MODEL = "users.userAccount"  
 
 #Email automation Settings 
@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
 
+    
+    'crispy_forms',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -96,29 +98,13 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'portfoliodb',
-#         'USER': 'root',
-#         'PASSWORD': '53748246',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-
-
-#         'OPTIONS':{
-#         #this will prevent ERROR: 1452
-#         "init_command":"SET foreign_key_checks = 0;",
-#         }
-#     }
-# }
 DATABASES = {
-    'default': {  
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_5339b2d70962352',
-        'USER': 'b3361d66c91e4a',
-        'PASSWORD': '046e71ac',
-        'HOST': 'us-cdbr-east-06.cleardb.net',
+        'NAME': 'popa',
+        'USER': 'root',
+        'PASSWORD': '53748246',
+        'HOST': 'localhost',
         'PORT': '3306',
 
 
@@ -128,6 +114,35 @@ DATABASES = {
         }
     }
 }
+
+# DATABASES = {
+#     'default': {  
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'heroku_5f65065f1f7008b',
+#         'USER': 'b3d9580d0703ba',
+#         'PASSWORD': '85244c7e',
+#         'HOST': 'us-cdbr-east-06.cleardb.net',
+#         'PORT': '3306',
+
+
+#         'OPTIONS':{
+#         #this will prevent ERROR: 1452
+#         "init_command":"SET foreign_key_checks = 0;",
+#         }
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# } 
+  
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
+
 
 
 # Password validation
@@ -176,10 +191,8 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
-
 }
 
 SITE_ID = 1
@@ -187,7 +200,6 @@ SITE_ID = 1
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
@@ -236,6 +248,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 
