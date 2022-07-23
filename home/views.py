@@ -14,11 +14,14 @@ from django.core.mail import send_mail
 from django.conf import settings
 #---------------------------------------
 
-
+import re
+from datetime import datetime    
 
 def home(request):
     
     allPost =  Blog.objects.filter().order_by('-pub_date')[0:2]
+
+
     context = {
         'allPost':allPost,
     }

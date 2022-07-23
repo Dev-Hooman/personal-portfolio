@@ -110,6 +110,9 @@ DATABASES = {
 
 
         'OPTIONS':{
+    
+        'charset': 'utf8mb4',
+  
         #this will prevent ERROR: 1452
         "init_command":"SET foreign_key_checks = 0;",
         }
@@ -132,6 +135,8 @@ DATABASES = {
 #         }
 #     }
 # }
+
+
 
 # DATABASES = {
 #     'default': {
@@ -250,6 +255,8 @@ SOCIALACCOUNT_PROVIDERS = {
 LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+TIME_ZONE = 'Asia/Karachi'
+USE_TZ = True
 
 
 

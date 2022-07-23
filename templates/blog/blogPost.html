@@ -1,5 +1,8 @@
 {% extends 'home/base.html' %}
 
+
+
+
 {% block title %} BlogPost {% endblock %}
 
 {% load humanize %}
@@ -17,14 +20,14 @@
           <h2 class="blog-post-title">{{blogPost.title}}</h2>
           <img
             src="/media/{{ blogPost.image }}"
-            class="displayImgPos thumbnail d-block w-100"
+            class="displayImgPos d-block w-100"
             alt="{{ blogPost.category }}"
           />
           <br />
           <p  class="blog-post-meta fst-italic ">
             {{blogPost.pub_date}} by <a href="#">{{blogPost.author}}</a>
           </p>
-          <p class="bi-text-indent-left">{{blogPost.content}}</p>
+          <p class="bi-text-indent-left">{{blogPost.content|safe}}</p>
           <hr />
         </article>
         <section>
@@ -33,7 +36,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="blog-comment">
-                  <h1>Comments ({{commentsCount}})</h1>
+                  <h1>Comments ({{comments.count}})</h1>
 
 
                   {% if user.is_authenticated%}
@@ -118,6 +121,7 @@
                       </div>
 
                       <!--REPLY COLLAPSE-->
+                      {% if user.is_authenticated%}
                       <div class="reply my-4">
                         <div class="collapse" id="replyBox{{comment.sno}}">
                           <div class="card card-body">
@@ -155,8 +159,11 @@
                           </div>
 
 
+
                         </div>
                       </div>
+                      {% endif %}
+
                     </li>
                     {% endfor %}
                   </ul>

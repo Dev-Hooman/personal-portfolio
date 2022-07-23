@@ -31,14 +31,15 @@
     </div>
     <div class="description">
       <h1>{{post.title}}</h1>
-      <h2>idher sub heading aajata</h2>
-      <p> {{post.content | truncatechars:75 }}</p>
+      <h2></h2>
+      <p> {{post.description | truncatechars:75 }}</p>
       <p class="read-more">
         <a href="/blog/{{post.slug}}">Read More</a>
       </p>
     </div>
   </div>
   {% endfor %}
+  <hr>
 
   <!--ALT b ha-->
 

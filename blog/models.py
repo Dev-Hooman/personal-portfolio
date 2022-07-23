@@ -14,6 +14,7 @@ class Blog(models.Model):
     category = models.CharField(max_length=100)
     pub_date = models.DateTimeField(blank=True)
     content = models.TextField()
+    description = models.TextField()
     slug = models.CharField(max_length=130)
     author = models.CharField(max_length=30)
     image = models.ImageField(upload_to = 'images/')
