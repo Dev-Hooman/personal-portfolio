@@ -99,42 +99,43 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'popa',
-        'USER': 'root',
-        'PASSWORD': '53748246',
-        'HOST': 'localhost',
-        'PORT': '3306',
-
-
-        'OPTIONS':{
-    
-        'charset': 'utf8mb4',
-  
-        #this will prevent ERROR: 1452
-        "init_command":"SET foreign_key_checks = 0;",
-        }
-    }
-}
-
 # DATABASES = {
-#     'default': {  
+#     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'heroku_5f65065f1f7008b',
-#         'USER': 'b3d9580d0703ba',
-#         'PASSWORD': '85244c7e',
-#         'HOST': 'us-cdbr-east-06.cleardb.net',
+#         'NAME': 'popa',
+#         'USER': 'root',
+#         'PASSWORD': '53748246',
+#         'HOST': 'localhost',
 #         'PORT': '3306',
 
 
 #         'OPTIONS':{
+    
+#         'charset': 'utf8mb4',
+  
 #         #this will prevent ERROR: 1452
 #         "init_command":"SET foreign_key_checks = 0;",
 #         }
 #     }
 # }
+
+DATABASES = {
+    'default': {  
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'heroku_5f65065f1f7008b',
+        'USER': 'b3d9580d0703ba',
+        'PASSWORD': '85244c7e',
+        'HOST': 'us-cdbr-east-06.cleardb.net',
+        'PORT': '3306',
+
+        'charset': 'utf8mb4',
+
+        'OPTIONS':{
+        #this will prevent ERROR: 1452
+        "init_command":"SET foreign_key_checks = 0;",
+        }
+    }
+}
 
 
 
