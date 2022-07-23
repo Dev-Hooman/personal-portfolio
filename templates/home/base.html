@@ -395,6 +395,7 @@
         }
 
 
+<<<<<<< HEAD
       
 
       
@@ -495,6 +496,26 @@
     {% block style %}
 
     {% endblock style %}
+=======
+        
+
+
+
+
+
+
+
+
+          
+        
+
+      
+      
+
+
+ 
+    </style>
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
 
 
 
@@ -504,6 +525,10 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
       <!-- HamBurger menu -->
       <nav class="menu">
         <div class="sidebar-top">
@@ -512,7 +537,11 @@
           </span>
           
           {% load static %}
+<<<<<<< HEAD
           <img src="{% static 'icons/d.png' %}" class="logo" alt="">
+=======
+          <img src="{% static 'icons/d.png' %}"" class="logo" alt="">
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
          
           <h3 class="hide">DevHooman</h3>
         </div>
@@ -618,13 +647,22 @@
         {% if request.user.is_authenticated %}
         <div class="sidebar-footer">
   
+<<<<<<< HEAD
           <a href="/" class="account tooltip-element" data-tooltip="0">
+=======
+          <a href="/user/{{userInfo.slug}}" class="account tooltip-element" data-tooltip="0">
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
             <i class='bx bx-user'></i>
           </a>
           <div class="admin-user tooltip-element" data-tooltip="1">
             <div class="admin-profile hide">
+<<<<<<< HEAD
               {% load static %}
               <img src="{% static 'icons/Default.jpg' %}"  alt="">
+=======
+
+              <img src="#" alt="">
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
               <div class="admin-info">
                 <h3>{{request.user.username }}</h3>
                 <h5>About</h5>
@@ -649,7 +687,12 @@
   
           <div class="admin-user tooltip-element" data-tooltip="0">
             <div class="admin-profile hide">
+<<<<<<< HEAD
                 {% load static %}
+=======
+
+              {% load static %}
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
               
               <div class="admin-info">
                 <h3>Login and Signup</h3>
@@ -692,12 +735,24 @@
 
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-0 " role="alert">
+<<<<<<< HEAD
           <strong>{{messageDisplay}} </strong>  <p> {{ message }} </p>
+=======
+          <strong>{{messageDisplay}} </strong>  <p> {{ message }} &#129395; </p>
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endfor %}
         
 
+<<<<<<< HEAD
+=======
+      
+        
+
+
+
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
         {% block body %}
       
         {% block content %}
@@ -784,9 +839,12 @@
 
 
       </script>
+<<<<<<< HEAD
 
       {% block js %}
       {% endblock js %}
+=======
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 

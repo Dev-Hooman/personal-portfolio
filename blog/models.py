@@ -23,6 +23,7 @@ class Blog(models.Model):
     def __str__(self) :
         return f"{self.title} by {self.author}"
 
+<<<<<<< HEAD
 class BlogComment(models.Model):
     sno = models.AutoField(primary_key=True)
     comment = models.TextField()
@@ -30,6 +31,15 @@ class BlogComment(models.Model):
     post = models.ForeignKey(Blog,on_delete=models.CASCADE)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
     timestamp = models.DateTimeField(default=now)
+=======
+# class BlogComment(models.Model):
+#     sno = models.AutoField(primary_key=True)
+#     comment = models.TextField()
+#     user = models.ForeignKey(userAccount, on_delete=models.CASCADE)
+#     post = models.ForeignKey(Blog,on_delete=models.CASCADE)
+#     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
+#     timestamp = models.DateTimeField(default=now)
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
 
     def __str__(self) :
         return self.comment[0:13]

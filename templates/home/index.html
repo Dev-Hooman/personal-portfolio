@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %} 
 
+<<<<<<< HEAD
 
 {% block style %}
 <style>
@@ -11,13 +12,24 @@
 
 
 
+=======
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
 {% block homeactive %} active {% endblock homeactive %} 
 
 {% block title %} Home {% endblock %} 
 
+<<<<<<< HEAD
 {% block body %}
 <div class="container">
 
+=======
+
+{% block body %}
+
+<div class="container">
+
+
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
   <div class="jumbotron">
     <div class="Image">
       <img
@@ -28,9 +40,15 @@
         />
     </div>
     <div class="text-center">
+<<<<<<< HEAD
       <h3 style="font-size: clamp(20px, 5vw, 34px);" class="animate-charcter"> Abdul Rehman Sarfaraz</h3>
       <div class="text-box">
         <div style="font-size: clamp(15px, 5vw, 34px);" class="text-reveal-wrapper">
+=======
+      <h3 class="animate-charcter"> Abdul Rehman Sarfaraz</h3>
+      <div class="text-box">
+        <div class="text-reveal-wrapper">
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
              <p>I'am</p>
              <div class="text-reveal-words">
                  <span></span>
@@ -41,6 +59,10 @@
         </div>
         <div class="row">
           <div class="DevItems">
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
             <img class="col-md-3" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
             <img class="col-md-3" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
             <img class="col-md-3"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
@@ -68,7 +90,10 @@
     </p>
   </div>
   <br />
+<<<<<<< HEAD
   <hr/>
+=======
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
 
 </div>
 <hr>
@@ -97,8 +122,13 @@
     </div>
     <div class="description">
       <h1>{{post.title}}</h1>
+<<<<<<< HEAD
       <h2></h2>
       <p> <div class="contentPreview">  {{post.description| truncatechars:75 }}  </div> </p>
+=======
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p> {{post.content | truncatechars:75 }}</p>
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
       <p class="read-more">
         <a href="/blog/{{post.slug}}">Read More</a>
       </p>
@@ -108,7 +138,12 @@
   <div align="right">
     <a class="  btn btn-primary" href="{% url 'blog' %}" role="button">View more</a>
   </div>
+<<<<<<< HEAD
   <hr/>
+=======
+  <hr>
+ 
+>>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
 
   <!--ALT b ha-->
 
