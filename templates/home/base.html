@@ -490,6 +490,96 @@
         }
         /* Blog Comments End */
 
+        .social-container {
+          margin-top: 0%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .btn-outline { 
+         margin-top: 15px; 
+         border: solid 1px #bbbbbb;    
+         font-size: 24px; 
+         color: #bbbbbb; 
+         background: 0 0; 
+         transition: all .3s ease-in-out; 
+        }
+        .btn-outline:hover, .btn-outline:focus, .btn-outline:active, .btn-outline.active { 
+          border: solid 1px #bbbbbb;    
+          color: #000; 
+          background: #bbbbbb; 
+        }
+        
+        .btn-social { 
+          display: inline-block; 
+          width: 48px; 
+          height: 48px; 
+          border: 1px solid #bbbbbb; 
+          border-radius: 100%; 
+          text-align: center; 
+          font-size: 24px; 
+          line-height: 46px; 
+        }
+        
+        
+        
+        .list-inline { 
+          padding-left: 0; 
+          list-style: none; 
+          margin-left: -5px; }
+        
+        .list-inline > li { 
+          display: inline-block;  
+          padding-left: 5px; 
+          padding-right: 5px; 
+        }
+        
+        .social-links { 
+          -webkit-animation: fade-in-down 0.9s; 
+          animation: fade-in-down 0.9s; 
+          -webkit-animation-delay: 0.2s; 
+          animation-delay: 0.2s; 
+        }
+        
+        /* Animations */
+        @-webkit-keyframes fade-in-down { 0% 
+          { opacity: 0; -webkit-transform: translateY(-10px); transform: translateY(-10px); 
+          }
+          100% { 
+            opacity: 1; 
+            -webkit-transform: translateY(0); 
+            transform: translateY(0); } }
+        @keyframes fade-in-down { 
+          0% { opacity: 0; 
+            -webkit-transform: translateY(-10px); 
+            transform: translateY(-10px); 
+          }
+          100% { opacity: 1; 
+            -webkit-transform: translateY(0); 
+            transform: translateY(0); 
+          } 
+        }
+
+
+
+        #Github {
+          background-image: url('https://img.icons8.com/color/48/000000/github--v1.png');
+        }
+        #Github:hover {
+          background-image: url('https://img.icons8.com/color/48/000000/github--v1.png');
+        }
+        #Twitter {
+          background-image: url('https://img.icons8.com/fluency/48/000000/twitter-circled.png');
+        }
+        #Twitter:hover {
+          background-image: url('https://img.icons8.com/fluency/48/000000/twitter-circled.png');
+        }
+        #LinkedIn {
+          background-image: url('https://img.icons8.com/fluency/48/000000/linkedin-circled.png');
+        }
+        #LinkedIn:hover {
+          background-image: url('https://img.icons8.com/fluency/48/000000/linkedin-circled.png');
+        }
+
    
  
     </style>
@@ -717,8 +807,22 @@
         {% endblock body %} 
         
 
+        <div class="social-container">
+          <div class="row">
+            <div class="col-md-12 text-center ">
+              <ul class="list-inline social-links">
+                <li><a id="Github" href="https://github.com/Dev-Hooman" class="btn-social btn-outline" data-toggle="tooltip" data-placement="top" title="Github"><i class="icon ion-social-github"></i></a>
+                </li>
+                <li><a id="Twitter" href="/" class="btn-social btn-outline" title="Twitter"><i class=" f"></i></a>
+                </li>
+                <li><a id="LinkedIn"  href="https://www.linkedin.com/in/abdulrehman-sarfaraz-b96a4a224/" class="btn-social btn-outline" title="LinkedIn"><i class=""></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <p class="text-center my-3 copyright">
-          &copy; 2022 - <span>Abdul Rehman Sarfaraz</span> All Rights Reserved.
+          &copy; 2022 - <span style="color: rgb(233, 233, 233);">Abdul Rehman Sarfaraz</span> All Rights Reserved.
         </p>
         
       </main>
