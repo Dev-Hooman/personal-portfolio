@@ -20,12 +20,9 @@
 
   <div class="jumbotron">
     <div class="Image">
-      <img
-        class="img-responsive rounded-circle z-depth-2"
-        alt="100x100"
-        src="/media/displayImage/DisplayP.JPG"
-        data-holder-rendered="true"
-        />
+
+        {% load static %}
+        <img  class="img-responsive rounded-circle z-depth-2" alt="100x100" src="{% static 'displayImage/DisplayP.JPG' %}" class="logo" alt="">
     </div>
     <div class="text-center">
       <h3 style="font-size: clamp(20px, 5vw, 34px);" class="animate-charcter"> Abdul Rehman Sarfaraz</h3>
