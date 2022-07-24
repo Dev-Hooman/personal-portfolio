@@ -26,11 +26,7 @@ SECRET_KEY = 'django-insecure-!q%szl^5u=n740%f_u%^z@os7&8l)+sczuhxaz**ejxw+2&)#i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
 ALLOWED_HOSTS = ['192.168.10.2','www.devhooman.live','devhooman.live','devhooman-portfolio.herokuapp.com']
-=======
-ALLOWED_HOSTS = ['localhost','www.devhooman.live','devhooman.live','devhooman-portfolio.herokuapp.com']
->>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
 AUTH_USER_MODEL = "users.userAccount"  
 
 #Email automation Settings 
@@ -54,8 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'users',
-
-    
+ 
     'crispy_forms',
     'django.contrib.sites',
     'allauth',
@@ -64,6 +59,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook'
 ]
+#x
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -271,11 +267,6 @@ SOCIALACCOUNT_PROVIDERS = {
 LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-<<<<<<< HEAD
-TIME_ZONE = 'Asia/Karachi'
-USE_TZ = True
-=======
->>>>>>> 804c4325be9c245b0fb53a81731dad7632e4bcd5
 
 
 
