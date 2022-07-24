@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-!q%szl^5u=n740%f_u%^z@os7&8l)+sczuhxaz**ejxw+2&)#i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-CSRF_TRUSTED_ORIGINS = ['www.devhooman.live','*.devhooman.live',]
+CSRF_TRUSTED_ORIGINS = ['https://www.devhooman.live','https://*.devhooman.live',]
 
 ALLOWED_HOSTS = ['localhost','www.devhooman.live','*.devhooman.live','devhooman-portfolio.herokuapp.com']
 AUTH_USER_MODEL = "users.userAccount"  
