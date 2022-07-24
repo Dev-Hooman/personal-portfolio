@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 from re import T
 from django.contrib.messages import constants as messages
-
+import jinja2
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-!q%szl^5u=n740%f_u%^z@os7&8l)+sczuhxaz**ejxw+2&)#i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','www.devhooman.live','*.devhooman.live','devhooman-portfolio.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','*.devhooman.live','devhooman-portfolio.herokuapp.com']
 AUTH_USER_MODEL = "users.userAccount"  
 
 #Email automation Settings 
@@ -78,7 +78,12 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [
+            'templates',
+            '/home/html/example.com',
+            '/home/html/default',
+  
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,6 +94,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
             ],
         },
+    },
+
+        {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [
+            '/home/html/jinja2',
+        ],
     },
 ]
 
