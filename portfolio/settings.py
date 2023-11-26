@@ -27,16 +27,18 @@ SECRET_KEY = 'django-insecure-!q%szl^5u=n740%f_u%^z@os7&8l)+sczuhxaz**ejxw+2&)#i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-CSRF_TRUSTED_ORIGINS = ['https://www.devhooman.live','https://*.devhooman.live',]
+# CSRF_TRUSTED_ORIGINS = ['https://www.devhooman.live','https://*.devhooman.live',]
 
-ALLOWED_HOSTS = ['localhost','www.devhooman.live','*.devhooman.live','devhooman-portfolio.herokuapp.com']
+# ALLOWED_HOSTS = ['localhost','www.devhooman.live','*.devhooman.live','devhooman-portfolio.herokuapp.com']
 AUTH_USER_MODEL = "users.userAccount"  
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['192.168.10.3']
 
 #Email automation Settings 
 EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'abdulrehmansarfaraz@outlook.com'
-EMAIL_HOST_PASSWORD = 'Mycateracin8246$'
+EMAIL_HOST_USER = 'youremail@outlook.com'
+EMAIL_HOST_PASSWORD = 'yourpassword'
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -112,43 +114,43 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'popa',
-#         'USER': 'root',
-#         'PASSWORD': '53748246',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-
-
-#         'OPTIONS':{
-    
-#         'charset': 'utf8mb4',
-  
-#         #this will prevent ERROR: 1452
-#         "init_command":"SET foreign_key_checks = 0;",
-#         }
-#     }
-# }
-
 DATABASES = {
-    'default': {  
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_8ba88ece5bb0ffb',
-        'USER': 'b057a4d7b624e1',
-        'PASSWORD': 'e8c00b5d',
-        'HOST': 'us-cdbr-east-06.cleardb.net',
+        'NAME': 'popa',
+        'USER': 'root',
+        'PASSWORD': '53748246',
+        'HOST': 'localhost',
         'PORT': '3306',
 
-        'charset': 'utf8mb4',
 
         'OPTIONS':{
+    
+        'charset': 'utf8mb4',
+  
         #this will prevent ERROR: 1452
         "init_command":"SET foreign_key_checks = 0;",
         }
     }
 }
+
+# DATABASES = {
+#     'default': {  
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'heroku_8ba88ece5bb0ffb',
+#         'USER': 'b057a4d7b624e1',
+#         'PASSWORD': 'e8c00b5d',
+#         'HOST': 'us-cdbr-east-06.cleardb.net',
+#         'PORT': '3306',
+
+#         'charset': 'utf8mb4',
+
+#         'OPTIONS':{
+#         #this will prevent ERROR: 1452
+#         "init_command":"SET foreign_key_checks = 0;",
+#         }
+#     }
+# }
 
 
 # DATABASES = {
