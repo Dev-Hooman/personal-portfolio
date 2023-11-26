@@ -9,6 +9,10 @@ Welcome to my portfolio! This project is built using Django and MySQL to showcas
 ![image](https://github.com/Dev-Hooman/personal-portfolio/assets/80707427/31da3f5a-000d-4a6d-a113-ca864216f901)
 ![image](https://github.com/Dev-Hooman/personal-portfolio/assets/80707427/ec5ef7c1-c462-4298-8e14-3079566545e3)
 
+## MYSQL DB
+![image](https://github.com/Dev-Hooman/personal-portfolio/assets/80707427/dfdc348e-9185-454d-9ce8-5971e1173100)
+
+
 ## Technologies Used
 
 - **Django**: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
